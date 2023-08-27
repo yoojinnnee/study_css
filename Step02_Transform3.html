@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step02_Transform3.html</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            border: 1px solid red;
+            cursor: pointer;
+            background-color: yellow;
+            transition: transform 0.4s ease-out;
+        }
+        .move{
+            transform: translateX(50px) translateY(50px) rotate(45deg) scale(1.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>transform 테스트</h1>
+        <button id="resetBtn">리셋</button>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+    </div>
+    <script>
+        //모든 .box div 의 참조값을 배열에 담아와서 
+        document.querySelectorAll(".box").forEach((item)=>{
+            //각각의 div 에 이벤트 리스너 함수를 등록한다. 
+            item.addEventListener("click", (e)=>{
+                e.target.classList.add("move");
+            });
+        });
+        //리셋 버튼을 눌렀을때
+        document.querySelector("#resetBtn").addEventListener("click", ()=>{
+            //모든 .box div 에서 move 클래스를 제거 
+            document.querySelectorAll(".box").forEach((item)=>{
+                item.classList.remove("move");
+            });
+        });
+    </script>
+</body>
+</html>
